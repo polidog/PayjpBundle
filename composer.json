@@ -1,0 +1,33 @@
+{
+    "name": "polidog/payjp-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "polidog",
+            "email": "polidogs@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Polidog\\PayjpBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Polidog\\PayjpBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "~7.1",
+
+        "payjp/payjp-php": "^1.0",
+        "symfony/event-dispatcher": "~3.4|~4.0",
+        "symfony/http-kernel": "~3.4|~4.0",
+        "symfony/dependency-injection": "~3.4|~4.0",
+        "symfony/config": "~3.4|~4.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.12",
+        "phpunit/phpunit": "^7.3"
+    }
+}

@@ -1,0 +1,25 @@
+services:
+
+    polidog_payjp.api:
+        class: Polidog\PayjpBundle\Payjp
+        arguments:
+            - "@polidog_payjp.proxy.method_proxy"
+
+    polidog_payjp.proxy.api_proxy:
+        class: Polidog\PayjpBundle\Proxy\ApiProxy
+        arguments:
+            - "%polidog.web_pay.secret_key%"
+        public: false
+
+    polidog_payjp.proxy.method_proxy:
+        class: Polidog\PayjpBundle\Proxy\MethodProxy
+        autowire: true
+        arguments:
+            $apiProxy: '@polidog_payjp.proxy.api_proxy'
+        public: false
+
+
+    Polidog\PayjpBundle\Proxy\CheckApiResourceClass:
+        class: Polidog\PayjpBundle\Proxy\CheckApiResourceClass
+        arguments:
+            $apiProxy: "Payjp\\ApiResource"
