@@ -22,4 +22,4 @@ services:
     Polidog\PayjpBundle\Proxy\CheckApiResourceClass:
         class: Polidog\PayjpBundle\Proxy\CheckApiResourceClass
         arguments:
-            $apiProxy: "Payjp\\ApiResource"
+            - "Payjp\\ApiResource"
