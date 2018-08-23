@@ -15,9 +15,14 @@ services:
         class: Polidog\PayjpBundle\Proxy\ClassFinder
         autowire: true
         arguments:
-            $apiProxy: '@Polidog\PayjpBundle\Proxy\CallApi'
+            $apiProxy: '@Polidog\PayjpBundle\Proxy\FireEvent'
         public: false
 
+    Polidog\PayjpBundle\Proxy\FireEvent:
+        class: Polidog\PayjpBundle\Proxy\FireEvent
+        arguments:
+            $apiProxy: '@Polidog\PayjpBundle\Proxy\CallApi'
+        public: false
 
     Polidog\PayjpBundle\Proxy\CheckApiResourceClass:
         class: Polidog\PayjpBundle\Proxy\CheckApiResourceClass
