@@ -22,6 +22,7 @@ services:
         class: Polidog\PayjpBundle\Proxy\FireEvent
         arguments:
             $apiProxy: '@Polidog\PayjpBundle\Proxy\CallApi'
+        autowire: true
         public: false
 
     Polidog\PayjpBundle\Proxy\CheckApiResourceClass:
