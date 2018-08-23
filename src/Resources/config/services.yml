@@ -29,3 +29,10 @@ services:
         class: Polidog\PayjpBundle\ApiDecorator\CheckApiResourceClass
         arguments:
             - "Payjp\\ApiResource"
+
+    Polidog\PayjpBundle\EventDispatcher\WebhookSubscriber:
+        class: Polidog\PayjpBundle\EventDispatcher\WebhookSubscriber
+        autowire: true
+        arguments:
+            $path: '%polidog.web_pay.webhook.path%'
+            $token: '%polidog.web_pay.webhook.token%'

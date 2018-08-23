@@ -20,7 +20,12 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->scalarNode('public_key')->defaultNull()->end()
             ->scalarNode('secret_key')->defaultNull()->end()
-            ->scalarNode('webhook_token')->defaultNull()->end()
+                ->arrayNode('webhook')
+                    ->children()
+                        ->scalarNode('token')->defaultNull()->end()
+                        ->scalarNode('path')->defaultNull()->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

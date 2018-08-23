@@ -18,7 +18,14 @@ class PolidogPayjpExtension extends Extension
 
         $container->setParameter('polidog.web_pay.public_key', $config['public_key']);
         $container->setParameter('polidog.web_pay.secret_key', $config['secret_key']);
-        $container->setParameter('polidog.web_pay.webhook_token', $config['webhook_token']);
+
+        if (isset($config['webhook']) && is_array($config['webhook'])) {
+            $container->setParameter('polidog.web_pay.webhook.token', $config['webhook']['token']);
+            $container->setParameter('polidog.web_pay.webhook.path', $config['webhook']['path']);
+        } else {
+            $container->setParameter('polidog.web_pay.webhook.token', null);
+            $container->setParameter('polidog.web_pay.webhook.path', null);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
