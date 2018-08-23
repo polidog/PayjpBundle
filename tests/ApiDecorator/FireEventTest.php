@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Tests\Proxy;
+namespace Polidog\PayjpBundle\Tests\ApiDecorator;
 
 use Payjp\ApiResource;
 use PHPUnit\Framework\TestCase;
 use Polidog\PayjpBundle\Event\RequestEvent;
 use Polidog\PayjpBundle\Event\ResponseEvent;
 use Polidog\PayjpBundle\Events;
-use Polidog\PayjpBundle\Proxy\ApiProxyInterface;
-use Polidog\PayjpBundle\Proxy\FireEvent;
+use Polidog\PayjpBundle\ApiDecorator\ApiDecoratorInterface;
+use Polidog\PayjpBundle\ApiDecorator\FireEvent;
 use Prophecy\Argument;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -22,7 +22,7 @@ class FireEventTest extends TestCase
     protected function setUp(): void
     {
         $this->eventDispatcher = $this->prophesize(EventDispatcherInterface::class);
-        $this->apiProxy = $this->prophesize(ApiProxyInterface::class);
+        $this->apiProxy = $this->prophesize(ApiDecoratorInterface::class);
     }
 
     public function testExecute(): void

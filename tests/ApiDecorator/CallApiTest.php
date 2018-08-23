@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Tests\Proxy;
+namespace Polidog\PayjpBundle\Tests\ApiDecorator;
 
 use PHPUnit\Framework\TestCase;
-use Polidog\PayjpBundle\Proxy\CallApi;
+use Polidog\PayjpBundle\ApiDecorator\CallApi;
 
 class CallApiTest extends TestCase
 {

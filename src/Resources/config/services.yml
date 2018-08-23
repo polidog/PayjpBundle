@@ -3,29 +3,29 @@ services:
     Polidog\PayjpBundle\Payjp:
         class: Polidog\PayjpBundle\Payjp
         arguments:
-            - '@Polidog\PayjpBundle\Proxy\ClassFinder'
+            - '@Polidog\PayjpBundle\ApiDecorator\ClassFinder'
 
-    Polidog\PayjpBundle\Proxy\CallApi:
-        class: Polidog\PayjpBundle\Proxy\CallApi
+    Polidog\PayjpBundle\ApiDecorator\CallApi:
+        class: Polidog\PayjpBundle\ApiDecorator\CallApi
         arguments:
             - "%polidog.web_pay.secret_key%"
         public: false
 
-    Polidog\PayjpBundle\Proxy\ClassFinder:
-        class: Polidog\PayjpBundle\Proxy\ClassFinder
+    Polidog\PayjpBundle\ApiDecorator\ClassFinder:
+        class: Polidog\PayjpBundle\ApiDecorator\ClassFinder
         autowire: true
         arguments:
-            $apiProxy: '@Polidog\PayjpBundle\Proxy\FireEvent'
+            $apiApiDecorator: '@Polidog\PayjpBundle\ApiDecorator\FireEvent'
         public: false
 
-    Polidog\PayjpBundle\Proxy\FireEvent:
-        class: Polidog\PayjpBundle\Proxy\FireEvent
+    Polidog\PayjpBundle\ApiDecorator\FireEvent:
+        class: Polidog\PayjpBundle\ApiDecorator\FireEvent
         arguments:
-            $apiProxy: '@Polidog\PayjpBundle\Proxy\CallApi'
+            $apiApiDecorator: '@Polidog\PayjpBundle\ApiDecorator\CallApi'
         autowire: true
         public: false
 
-    Polidog\PayjpBundle\Proxy\CheckApiResourceClass:
-        class: Polidog\PayjpBundle\Proxy\CheckApiResourceClass
+    Polidog\PayjpBundle\ApiDecorator\CheckApiResourceClass:
+        class: Polidog\PayjpBundle\ApiDecorator\CheckApiResourceClass
         arguments:
             - "Payjp\\ApiResource"

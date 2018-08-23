@@ -11,8 +11,8 @@ use Payjp\Customer;
 use Payjp\Event;
 use Payjp\Subscription;
 use Payjp\Token;
-use Polidog\PayjpBundle\Proxy\ApiProxyInterface;
-use Polidog\PayjpBundle\Proxy\PropertyBind;
+use Polidog\PayjpBundle\ApiDecorator\ApiDecoratorInterface;
+use Polidog\PayjpBundle\ApiDecorator\PropertyBind;
 
 /**
  * Class Payjp.
@@ -28,16 +28,16 @@ use Polidog\PayjpBundle\Proxy\PropertyBind;
 class Payjp
 {
     /**
-     * @var ApiProxyInterface
+     * @var ApiDecoratorInterface
      */
     private $apiProxy;
 
     /**
      * Payjp constructor.
      *
-     * @param ApiProxyInterface $apiProxy
+     * @param ApiDecoratorInterface $apiProxy
      */
-    public function __construct(ApiProxyInterface $apiProxy)
+    public function __construct(ApiDecoratorInterface $apiProxy)
     {
         $this->apiProxy = $apiProxy;
     }

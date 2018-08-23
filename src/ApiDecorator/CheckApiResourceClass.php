@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Proxy;
+namespace Polidog\PayjpBundle\ApiDecorator;
 
 class CheckApiResourceClass
 {

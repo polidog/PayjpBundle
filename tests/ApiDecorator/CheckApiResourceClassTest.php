@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Tests\Proxy;
+namespace Polidog\PayjpBundle\Tests\ApiDecorator;
 
 use PHPUnit\Framework\TestCase;
-use Polidog\PayjpBundle\Proxy\CheckApiResourceClass;
+use Polidog\PayjpBundle\ApiDecorator\CheckApiResourceClass;
 
 class CheckApiResourceClassTest extends TestCase
 {

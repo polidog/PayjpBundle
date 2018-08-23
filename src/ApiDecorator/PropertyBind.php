@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Proxy;
+namespace Polidog\PayjpBundle\ApiDecorator;
 
 use Polidog\PayjpBundle\Exception\ApiErrorException;
 use Polidog\PayjpBundle\Exception\ClassNotFoundException;
@@ -10,7 +10,7 @@ use Polidog\PayjpBundle\Exception\ClassNotFoundException;
 class PropertyBind
 {
     /**
-     * @var ApiProxyInterface
+     * @var ApiDecoratorInterface
      */
     private $ApiProxy;
 
@@ -22,10 +22,10 @@ class PropertyBind
     /**
      * PropertyBind constructor.
      *
-     * @param ApiProxyInterface $ApiProxy
-     * @param string            $property
+     * @param ApiDecoratorInterface $ApiProxy
+     * @param string                $property
      */
-    public function __construct(ApiProxyInterface $ApiProxy, string $property)
+    public function __construct(ApiDecoratorInterface $ApiProxy, string $property)
     {
         $this->ApiProxy = $ApiProxy;
         $this->property = $property;

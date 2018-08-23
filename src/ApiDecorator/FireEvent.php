@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Proxy;
+namespace Polidog\PayjpBundle\ApiDecorator;
 
 use Payjp\ApiResource;
 use Polidog\PayjpBundle\Event\RequestEvent;
@@ -10,7 +10,7 @@ use Polidog\PayjpBundle\Event\ResponseEvent;
 use Polidog\PayjpBundle\Events;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class FireEvent implements ApiProxyInterface
+class FireEvent implements ApiDecoratorInterface
 {
     /**
      * @var EventDispatcherInterface
@@ -18,7 +18,7 @@ class FireEvent implements ApiProxyInterface
     private $eventDispatcher;
 
     /**
-     * @var ApiProxyInterface
+     * @var ApiDecoratorInterface
      */
     private $apiProxy;
 
@@ -26,9 +26,9 @@ class FireEvent implements ApiProxyInterface
      * FireEvent constructor.
      *
      * @param EventDispatcherInterface $eventDispatcher
-     * @param ApiProxyInterface        $apiProxy
+     * @param ApiDecoratorInterface    $apiProxy
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, ApiProxyInterface $apiProxy)
+    public function __construct(EventDispatcherInterface $eventDispatcher, ApiDecoratorInterface $apiProxy)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->apiProxy = $apiProxy;

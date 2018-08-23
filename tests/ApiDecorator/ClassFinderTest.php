@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Tests\Proxy;
+namespace Polidog\PayjpBundle\Tests\ApiDecorator;
 
 use PHPUnit\Framework\TestCase;
-use Polidog\PayjpBundle\Proxy\ApiProxyInterface;
-use Polidog\PayjpBundle\Proxy\CheckApiResourceClass;
-use Polidog\PayjpBundle\Proxy\ClassFinder;
+use Polidog\PayjpBundle\ApiDecorator\ApiDecoratorInterface;
+use Polidog\PayjpBundle\ApiDecorator\CheckApiResourceClass;
+use Polidog\PayjpBundle\ApiDecorator\ClassFinder;
 
 class ClassFinderTest extends TestCase
 {
@@ -17,7 +17,7 @@ class ClassFinderTest extends TestCase
 
     public function setUp(): void
     {
-        $this->apiProxy = $this->prophesize(ApiProxyInterface::class);
+        $this->apiProxy = $this->prophesize(ApiDecoratorInterface::class);
         $this->checkApiResourceClass = $this->prophesize(CheckApiResourceClass::class);
     }
 

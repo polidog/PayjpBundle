@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Proxy;
+namespace Polidog\PayjpBundle\ApiDecorator;
 
 use Payjp\Error\Base;
 use Payjp\Payjp;
 use Polidog\PayjpBundle\Exception\ApiErrorException;
 
-class CallApi implements ApiProxyInterface
+class CallApi implements ApiDecoratorInterface
 {
     /**
      * @var string

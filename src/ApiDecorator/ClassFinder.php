@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Polidog\PayjpBundle\Proxy;
+namespace Polidog\PayjpBundle\ApiDecorator;
 
 use Polidog\PayjpBundle\Exception\ApiErrorException;
 use Polidog\PayjpBundle\Exception\ClassNotFoundException;
 use Polidog\PayjpBundle\Exception\NoApiResourceClassException;
 
-class ClassFinder implements ApiProxyInterface
+class ClassFinder implements ApiDecoratorInterface
 {
     /**
-     * @var ApiProxyInterface
+     * @var ApiDecoratorInterface
      */
     private $apiProxy;
 
@@ -23,10 +23,10 @@ class ClassFinder implements ApiProxyInterface
     /**
      * MethodProxy constructor.
      *
-     * @param ApiProxyInterface     $apiProxy
+     * @param ApiDecoratorInterface $apiProxy
      * @param CheckApiResourceClass $checkApiResourceClass
      */
-    public function __construct(ApiProxyInterface $apiProxy, CheckApiResourceClass $checkApiResourceClass)
+    public function __construct(ApiDecoratorInterface $apiProxy, CheckApiResourceClass $checkApiResourceClass)
     {
         $this->apiProxy = $apiProxy;
         $this->checkApiResourceClass = $checkApiResourceClass;
