@@ -3,19 +3,19 @@ services:
     Polidog\PayjpBundle\Payjp:
         class: Polidog\PayjpBundle\Payjp
         arguments:
-            - "@Polidog\PayjpBundle\Proxy\MethodProxy"
+            - '@Polidog\PayjpBundle\Proxy\ClassFinder'
 
-    Polidog\PayjpBundle\Proxy\ApiProxy:
-        class: Polidog\PayjpBundle\Proxy\ApiProxy
+    Polidog\PayjpBundle\Proxy\CallApi:
+        class: Polidog\PayjpBundle\Proxy\CallApi
         arguments:
             - "%polidog.web_pay.secret_key%"
         public: false
 
-    Polidog\PayjpBundle\Proxy\MethodProxy:
-        class: Polidog\PayjpBundle\Proxy\MethodProxy
+    Polidog\PayjpBundle\Proxy\ClassFinder:
+        class: Polidog\PayjpBundle\Proxy\ClassFinder
         autowire: true
         arguments:
-            $apiProxy: '@Polidog\PayjpBundle\Proxy\ApiProxy'
+            $apiProxy: '@Polidog\PayjpBundle\Proxy\CallApi'
         public: false
 
 

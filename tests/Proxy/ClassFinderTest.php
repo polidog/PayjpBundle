@@ -8,10 +8,10 @@ use Payjp\ApiResource;
 use PHPUnit\Framework\TestCase;
 use Polidog\PayjpBundle\Proxy\ApiProxyInterface;
 use Polidog\PayjpBundle\Proxy\CheckApiResourceClass;
-use Polidog\PayjpBundle\Proxy\MethodProxy;
+use Polidog\PayjpBundle\Proxy\ClassFinder;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class MethodProxyTest extends TestCase
+class ClassFinderTest extends TestCase
 {
     private $eventDispatcher;
 
@@ -48,7 +48,7 @@ class MethodProxyTest extends TestCase
         $this->checkApiResourceClass->check($className)
             ->willReturn(true);
 
-        $methodProxy = new MethodProxy($this->eventDispatcher->reveal(), $this->apiProxy->reveal(), $this->checkApiResourceClass->reveal());
+        $methodProxy = new ClassFinder($this->eventDispatcher->reveal(), $this->apiProxy->reveal(), $this->checkApiResourceClass->reveal());
         $methodProxy->execute($property, $method, $data);
 
         $this->apiProxy->execute("\\Payjp\\$property", $method, $data)

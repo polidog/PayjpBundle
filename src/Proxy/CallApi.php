@@ -8,7 +8,7 @@ use Payjp\Error\Base;
 use Payjp\Payjp;
 use Polidog\PayjpBundle\Exception\ApiErrorException;
 
-class ApiProxy implements ApiProxyInterface
+class CallApi implements ApiProxyInterface
 {
     /**
      * @var string

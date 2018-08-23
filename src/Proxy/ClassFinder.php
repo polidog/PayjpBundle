@@ -13,7 +13,7 @@ use Polidog\PayjpBundle\Exception\ClassNotFoundException;
 use Polidog\PayjpBundle\Exception\NoApiResourceClassException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class MethodProxy implements ApiProxyInterface
+class ClassFinder implements ApiProxyInterface
 {
     /**
      * @var EventDispatcherInterface
