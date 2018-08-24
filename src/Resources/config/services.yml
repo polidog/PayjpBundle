@@ -15,13 +15,13 @@ services:
         class: Polidog\PayjpBundle\ApiDecorator\ClassFinder
         autowire: true
         arguments:
-            $apiApiDecorator: '@Polidog\PayjpBundle\ApiDecorator\FireEvent'
+            $api: '@Polidog\PayjpBundle\ApiDecorator\FireEvent'
         public: false
 
     Polidog\PayjpBundle\ApiDecorator\FireEvent:
         class: Polidog\PayjpBundle\ApiDecorator\FireEvent
         arguments:
-            $apiApiDecorator: '@Polidog\PayjpBundle\ApiDecorator\CallApi'
+            $api: '@Polidog\PayjpBundle\ApiDecorator\CallApi'
         autowire: true
         public: false
 
