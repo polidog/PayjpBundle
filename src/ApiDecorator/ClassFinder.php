@@ -13,7 +13,7 @@ class ClassFinder implements ApiDecoratorInterface
     /**
      * @var ApiDecoratorInterface
      */
-    private $apiProxy;
+    private $api;
 
     /**
      * @var CheckApiResourceClass
@@ -23,12 +23,12 @@ class ClassFinder implements ApiDecoratorInterface
     /**
      * MethodProxy constructor.
      *
-     * @param ApiDecoratorInterface $apiProxy
+     * @param ApiDecoratorInterface $api
      * @param CheckApiResourceClass $checkApiResourceClass
      */
-    public function __construct(ApiDecoratorInterface $apiProxy, CheckApiResourceClass $checkApiResourceClass)
+    public function __construct(ApiDecoratorInterface $api, CheckApiResourceClass $checkApiResourceClass)
     {
-        $this->apiProxy = $apiProxy;
+        $this->api = $api;
         $this->checkApiResourceClass = $checkApiResourceClass;
     }
 
@@ -54,6 +54,6 @@ class ClassFinder implements ApiDecoratorInterface
             throw new NoApiResourceClassException("$className is no Payjp\ApiResource extends object.");
         }
 
-        return $this->apiProxy->execute($className, $method, $args);
+        return $this->api->execute($className, $method, $args);
     }
 }

@@ -20,18 +20,18 @@ class FireEvent implements ApiDecoratorInterface
     /**
      * @var ApiDecoratorInterface
      */
-    private $apiProxy;
+    private $api;
 
     /**
      * FireEvent constructor.
      *
      * @param EventDispatcherInterface $eventDispatcher
-     * @param ApiDecoratorInterface    $apiProxy
+     * @param ApiDecoratorInterface    $api
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, ApiDecoratorInterface $apiProxy)
+    public function __construct(EventDispatcherInterface $eventDispatcher, ApiDecoratorInterface $api)
     {
         $this->eventDispatcher = $eventDispatcher;
-        $this->apiProxy = $apiProxy;
+        $this->api = $api;
     }
 
     /**
@@ -42,7 +42,7 @@ class FireEvent implements ApiDecoratorInterface
     public function execute(string $className, string $method, array $args)
     {
         $this->fireRequestEvent($className, $method, $args);
-        $result = $this->apiProxy->execute($className, $method, $args);
+        $result = $this->api->execute($className, $method, $args);
         $this->fireResponseEvent($className, $method, $args, $result);
 
         return $result;
