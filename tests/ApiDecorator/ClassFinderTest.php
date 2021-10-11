@@ -21,7 +21,7 @@ class ClassFinderTest extends TestCase
         $this->checkApiResourceClass = $this->prophesize(CheckApiResourceClass::class);
     }
 
-    public function test_call(): void
+    public function testCall(): void
     {
         $property = 'Card';
         $method = 'create';

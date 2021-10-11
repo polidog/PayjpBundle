@@ -27,32 +27,21 @@ use Polidog\PayjpBundle\ApiDecorator\PropertyBind;
  */
 class Payjp
 {
-    /**
-     * @var ApiDecoratorInterface
-     */
-    private $apiProxy;
-
-    /**
-     * Payjp constructor.
-     *
-     * @param ApiDecoratorInterface $apiProxy
-     */
-    public function __construct(ApiDecoratorInterface $apiProxy)
+    public function __construct(private ApiDecoratorInterface $apiProxy)
     {
-        $this->apiProxy = $apiProxy;
     }
 
-    public function __get($name)
+    public function __get(string $name): PropertyBind
     {
         return new PropertyBind($this->apiProxy, $name);
     }
 
-    public function __set($name, $value): void
+    public function __set(string $name, mixed $value): void
     {
         throw new \LogicException();
     }
 
-    public function __isset($name): void
+    public function __isset(string $name): bool
     {
         throw new \LogicException();
     }

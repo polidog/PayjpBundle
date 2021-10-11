@@ -12,15 +12,15 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('polidog_payjp');
+        $treeBuilder = new TreeBuilder('polidog_payjp');
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode
             ->children()
-            ->scalarNode('public_key')->defaultNull()->end()
-            ->scalarNode('secret_key')->defaultNull()->end()
-            ->scalarNode('webhook_token')->defaultNull()->end()
+                ->scalarNode('public_key')->defaultNull()->end()
+                ->scalarNode('secret_key')->defaultNull()->end()
+                ->scalarNode('webhook_token')->defaultNull()->end()
             ->end()
         ;
 

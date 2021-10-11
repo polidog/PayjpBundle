@@ -6,11 +6,11 @@ namespace Polidog\PayjpBundle\Tests\ApiDecorator;
 
 use Payjp\ApiResource;
 use PHPUnit\Framework\TestCase;
+use Polidog\PayjpBundle\ApiDecorator\ApiDecoratorInterface;
+use Polidog\PayjpBundle\ApiDecorator\FireEvent;
 use Polidog\PayjpBundle\Event\RequestEvent;
 use Polidog\PayjpBundle\Event\ResponseEvent;
 use Polidog\PayjpBundle\Events;
-use Polidog\PayjpBundle\ApiDecorator\ApiDecoratorInterface;
-use Polidog\PayjpBundle\ApiDecorator\FireEvent;
 use Prophecy\Argument;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 

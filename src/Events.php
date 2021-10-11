@@ -6,9 +6,9 @@ namespace Polidog\PayjpBundle;
 
 final class Events
 {
-    const REQUEST = 'polidog_payjp.request';
+    public const REQUEST = 'polidog_payjp.request';
 
-    const RESPONSE = 'polidog_payjp.response';
+    public const RESPONSE = 'polidog_payjp.response';
 
-    const WEB_HOOK = 'polidog_payjp.web_hook';
+    public const WEB_HOOK = 'polidog_payjp.web_hook';
 }

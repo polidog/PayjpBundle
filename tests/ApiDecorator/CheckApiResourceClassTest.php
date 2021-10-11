@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Polidog\PayjpBundle\Tests\ApiDecorator;
 
+use Payjp\Account;
+use Payjp\AttachedObject;
+use Payjp\Card;
 use PHPUnit\Framework\TestCase;
 use Polidog\PayjpBundle\ApiDecorator\CheckApiResourceClass;
 
@@ -11,11 +14,8 @@ class CheckApiResourceClassTest extends TestCase
 {
     /**
      * @dataProvider dp_classNames
-     *
-     * @param $className
-     * @param $expect
      */
-    public function testCheckPayjpClass($className, $expect): void
+    final public function testCheckPayjpClass(string $className, bool $expect): void
     {
         $checkClass = new CheckApiResourceClass('Payjp\\ApiResource');
         $actual = $checkClass->check($className);
@@ -25,9 +25,9 @@ class CheckApiResourceClassTest extends TestCase
     public function dp_classNames()
     {
         return [
-            ['\\Payjp\\Account', true],
-            ['\\Payjp\\AttachedObject', false],
-            ['\\Payjp\\Card', true],
+            [Account::class, true],
+            [AttachedObject::class, false],
+            [Card::class, true],
         ];
     }
 }

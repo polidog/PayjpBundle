@@ -6,5 +6,5 @@ namespace Polidog\PayjpBundle\ApiDecorator;
 
 interface ApiDecoratorInterface
 {
-    public function execute(string $className, string $method, array $args);
+    public function execute(string $className, string $method, array $args): mixed;
 }

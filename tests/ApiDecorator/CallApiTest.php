@@ -9,7 +9,7 @@ use Polidog\PayjpBundle\ApiDecorator\CallApi;
 
 class CallApiTest extends TestCase
 {
-    public function testExecute(): void
+    final public function testExecute(): void
     {
         $dummyApiKey = 'akekekeke';
         $callApi = new CallApi($dummyApiKey);
@@ -20,7 +20,7 @@ class CallApiTest extends TestCase
 
 class DummyApiClass
 {
-    public static function call(string $a)
+    public static function call(string $a): string
     {
         return 'call-DummyApiClass '.$a;
     }

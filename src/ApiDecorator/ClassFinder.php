@@ -11,49 +11,31 @@ use Polidog\PayjpBundle\Exception\NoApiResourceClassException;
 class ClassFinder implements ApiDecoratorInterface
 {
     /**
-     * @var ApiDecoratorInterface
-     */
-    private $api;
-
-    /**
-     * @var CheckApiResourceClass
-     */
-    private $checkApiResourceClass;
-
-    /**
      * MethodProxy constructor.
      *
      * @param ApiDecoratorInterface $api
      * @param CheckApiResourceClass $checkApiResourceClass
      */
-    public function __construct(ApiDecoratorInterface $api, CheckApiResourceClass $checkApiResourceClass)
+    public function __construct(private ApiDecoratorInterface $api, private CheckApiResourceClass $checkApiResourceClass)
     {
-        $this->api = $api;
-        $this->checkApiResourceClass = $checkApiResourceClass;
     }
 
     /**
-     * @param string $property
-     * @param string $method
-     * @param array  $args
-     *
-     * @return mixed
-     *
      * @throws ClassNotFoundException
      * @throws ApiErrorException
      */
-    public function execute(string $property, string $method, array $args)
+    public function execute(string $className, string $method, array $args): mixed
     {
-        $className = sprintf('\\Payjp\\%s', ucfirst($property));
+        $payJpClassName = sprintf('\\Payjp\\%s', ucfirst($className));
 
-        if (false === class_exists($className)) {
-            throw new ClassNotFoundException('no exist class: '.$className);
+        if (false === class_exists($payJpClassName)) {
+            throw new ClassNotFoundException('no exist class: '.$payJpClassName);
         }
 
-        if (false === $this->checkApiResourceClass->check($className)) {
-            throw new NoApiResourceClassException("$className is no Payjp\ApiResource extends object.");
+        if (false === $this->checkApiResourceClass->check($payJpClassName)) {
+            throw new NoApiResourceClassException("$payJpClassName is no Payjp\ApiResource extends object.");
         }
 
-        return $this->api->execute($className, $method, $args);
+        return $this->api->execute($payJpClassName, $method, $args);
     }
 }
