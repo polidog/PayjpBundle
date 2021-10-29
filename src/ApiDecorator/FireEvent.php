@@ -16,7 +16,7 @@ class FireEvent implements ApiDecoratorInterface
     {
     }
 
-    public function execute(string $className, string $method, array $args)
+    public function execute(string $className, string $method, array $args): mixed
     {
         $this->fireRequestEvent($className, $method, $args);
         $result = $this->api->execute($className, $method, $args);
