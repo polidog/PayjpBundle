@@ -20,7 +20,7 @@
     "require": {
         "php": "~8.0",
 
-        "payjp/payjp-php": "^1.0",
+        "payjp/payjp-php": "^1.2",
         "symfony/event-dispatcher": "~5.3",
         "symfony/http-kernel": "~5.3",
         "symfony/dependency-injection": "~5.3",

@@ -31,7 +31,7 @@ class ApiErrorException extends \RuntimeException implements PayjpBundleExceptio
 
     final public static function newException(string $className, string $method, array $args, Base $previous): self
     {
-        $e = new self($previous->getMessage(), $previous->getCode(), $previous);
+        $e = new self($previous->getMessage(), (int) $previous->getCode(), $previous);
         $e->className = $className;
         $e->method = $method;
         $e->args = $args;
